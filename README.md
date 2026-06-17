@@ -2,7 +2,7 @@
 
 An interactive demo of a personal operations command center for solo creatives — with a dry-witted AI assistant named Randy (a raccoon who takes his job very seriously).
 
-▶ [Live demo](https://your-demo-url)
+▶ [Live demo](https://meet-randy-showcase.lovable.app)
 
 ## What it is
 
