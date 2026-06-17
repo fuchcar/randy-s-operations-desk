@@ -83,8 +83,10 @@ export function Today() {
             <p className="mt-4 text-sm text-muted-foreground">Inbox zero. Go take a walk.</p>
           )}
         </motion.div>
+        </Explainable>
 
         {/* Board heat */}
+        <Explainable id="board-heat">
         <motion.div
           data-tour="board-heat"
           whileHover={{ y: -2 }}
@@ -109,10 +111,12 @@ export function Today() {
             Based on open work, weighted by effort. Above 75% Randy starts politely declining new jobs.
           </p>
         </motion.div>
+        </Explainable>
       </div>
 
       <div className="grid gap-5 md:grid-cols-2">
         {/* Hard deadlines */}
+        <Explainable id="hard-deadlines">
         <motion.div whileHover={{ y: -2 }} className="paper rounded-2xl p-6">
           <div className="mb-4 flex items-center justify-between">
             <div>
@@ -141,8 +145,10 @@ export function Today() {
             ))}
           </ul>
         </motion.div>
+        </Explainable>
 
         {/* Coming up — shoot prep */}
+        <Explainable id="coming-up">
         <motion.div data-tour="shoot-prep" whileHover={{ y: -2 }} className="paper rounded-2xl p-6">
           <div className="mb-4 flex items-center justify-between">
             <div>
@@ -183,6 +189,7 @@ export function Today() {
             Send me the prep brief <ArrowRight className="h-3 w-3" />
           </button>
         </motion.div>
+        </Explainable>
       </div>
 
       {mode === "explore" && <QuickAddTask />}
