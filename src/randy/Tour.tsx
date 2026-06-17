@@ -69,13 +69,17 @@ const steps: Step[] = [
 
 export function Tour() {
   const step = useDesk((s) => s.tourStep);
+  const minimized = useDesk((s) => s.tourMinimized);
   const next = useDesk((s) => s.nextTour);
   const prev = useDesk((s) => s.prevTour);
   const end = useDesk((s) => s.endTour);
+  const minimize = useDesk((s) => s.minimizeTour);
+  const resume = useDesk((s) => s.resumeTour);
   const setRoom = useDesk((s) => s.setRoom);
 
   const active = step >= 0 && step < steps.length;
   const current = active ? steps[step] : null;
+  const showCoachmark = active && !minimized;
 
   // First-visit auto-start
   const startTour = useDesk((s) => s.startTour);
@@ -90,16 +94,16 @@ export function Tour() {
     }
   }, [startTour]);
 
-  // Switch room when step requires it
+  // Switch room when step requires it (but not while minimized — let user roam)
   useEffect(() => {
-    if (current) setRoom(current.room);
-  }, [step]); // eslint-disable-line
+    if (current && !minimized) setRoom(current.room);
+  }, [step, minimized]); // eslint-disable-line
 
   const [rect, setRect] = useState<DOMRect | null>(null);
   const rafRef = useRef<number | null>(null);
 
   useLayoutEffect(() => {
-    if (!current) { setRect(null); return; }
+    if (!showCoachmark || !current) { setRect(null); return; }
     const measure = () => {
       const el = document.querySelector<HTMLElement>(`[data-tour="${current.target}"]`);
       if (el) {
@@ -120,9 +124,29 @@ export function Tour() {
       window.removeEventListener("scroll", onResize, true);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [step, current?.target]);
+  }, [step, current?.target, showCoachmark]);
 
-  if (!active || !current) return null;
+  // Floating "Resume" chip while minimized
+  if (active && minimized) {
+    return (
+      <motion.button
+        initial={{ opacity: 0, y: 12, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 12 }}
+        transition={{ type: "spring", stiffness: 280, damping: 22 }}
+        onClick={resume}
+        className="paper fixed bottom-5 right-5 z-[70] flex items-center gap-3 rounded-full px-4 py-2.5 shadow-2xl ring-1 ring-[color:var(--gold-soft)]/40 hover:brightness-110 transition"
+      >
+        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[color:var(--surface-2)] text-base">🦝</span>
+        <span className="text-xs">
+          <span className="gold-text">Resume tour</span>
+          <span className="text-muted-foreground"> · {step + 1}/{steps.length}</span>
+        </span>
+      </motion.button>
+    );
+  }
+
+  if (!showCoachmark || !current) return null;
 
   const pad = 10;
   const r = rect
@@ -149,7 +173,7 @@ export function Tour() {
   return (
     <div className="fixed inset-0 z-[70] pointer-events-none">
       {/* Dim with cut-out */}
-      <svg className="absolute inset-0 h-full w-full pointer-events-auto" onClick={end}>
+      <svg className="absolute inset-0 h-full w-full pointer-events-auto" onClick={minimize}>
         <defs>
           <mask id="tour-mask">
             <rect width="100%" height="100%" fill="white" />
@@ -185,15 +209,28 @@ export function Tour() {
           <div className="flex items-start gap-3">
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[color:var(--surface-2)] text-lg ring-1 ring-[color:var(--gold-soft)]/40">🦝</div>
             <div className="flex-1">
-              <div className="text-[10px] uppercase tracking-[0.18em] gold-text/80">
-                Step {step + 1} of {steps.length}
+              <div className="flex items-center justify-between gap-2">
+                <div className="text-[10px] uppercase tracking-[0.18em] gold-text/80">
+                  Step {step + 1} of {steps.length}
+                </div>
+                <button
+                  onClick={minimize}
+                  title="Explore on my own"
+                  aria-label="Minimize tour"
+                  className="rounded-md p-1 text-muted-foreground transition hover:bg-[color:var(--surface-2)] hover:text-[color:var(--parchment)]"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14"/></svg>
+                </button>
               </div>
               <h4 className="mt-0.5 text-lg gold-text">{current.title}</h4>
               <p className="mt-2 text-sm leading-relaxed text-[color:var(--parchment)]/85">{current.body}</p>
             </div>
           </div>
-          <div className="mt-4 flex items-center justify-between">
-            <button onClick={end} className="text-xs text-muted-foreground hover:text-foreground transition">Skip tour</button>
+          <div className="mt-4 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <button onClick={end} className="text-xs text-muted-foreground hover:text-foreground transition">Skip tour</button>
+              <button onClick={minimize} className="text-xs text-muted-foreground hover:text-[color:var(--gold)] transition">Explore on my own</button>
+            </div>
             <div className="flex items-center gap-2">
               <button
                 onClick={prev}

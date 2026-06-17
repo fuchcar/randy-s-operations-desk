@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowDownRight, Wallet, Plus, Scan } from "lucide-react";
 import { useState } from "react";
 import { useDesk } from "../store";
+import { Explainable } from "../Explainable";
 
 const MONTH_IN = 14820;
 const MONTH_OUT = 6240;
@@ -25,6 +26,7 @@ export function Money() {
       </div>
 
       <div className="grid gap-5 md:grid-cols-3">
+        <Explainable id="money-balance">
         <motion.div whileHover={{ y: -2 }} className="paper rounded-2xl p-6 md:col-span-1">
           <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.22em] gold-text/80">
             <span>Balance</span><Wallet className="h-3.5 w-3.5" />
@@ -34,7 +36,9 @@ export function Money() {
           </div>
           <div className="mt-1 text-xs text-muted-foreground">Operating · across two accounts</div>
         </motion.div>
+        </Explainable>
 
+        <Explainable id="money-in">
         <motion.div whileHover={{ y: -2 }} className="paper rounded-2xl p-6">
           <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.22em] gold-text/80">
             <span>In · this month</span><ArrowUpRight className="h-3.5 w-3.5" />
@@ -42,7 +46,9 @@ export function Money() {
           <div className="mt-3 font-serif text-4xl">${MONTH_IN.toLocaleString()}</div>
           <div className="mt-1 text-xs text-muted-foreground">5 invoices cleared</div>
         </motion.div>
+        </Explainable>
 
+        <Explainable id="money-out">
         <motion.div whileHover={{ y: -2 }} className="paper rounded-2xl p-6">
           <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.22em] gold-text/80">
             <span>Out · this month</span><ArrowDownRight className="h-3.5 w-3.5" />
@@ -50,7 +56,10 @@ export function Money() {
           <div className="mt-3 font-serif text-4xl">${MONTH_OUT.toLocaleString()}</div>
           <div className="mt-1 text-xs text-muted-foreground">Gear, rent, software, fuel</div>
         </motion.div>
+        </Explainable>
       </div>
+
+      <Explainable id="bills">
 
       <motion.div whileHover={{ y: -2 }} className="paper rounded-2xl p-6">
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
@@ -119,6 +128,7 @@ export function Money() {
           ))}
         </ul>
       </motion.div>
+      </Explainable>
 
       {mode === "explore" && <QuickAddBill onAdd={addBill} />}
     </div>

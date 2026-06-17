@@ -36,10 +36,14 @@ type State = {
 
   // Tour
   tourStep: number;       // -1 = inactive
+  tourMinimized: boolean;
   startTour: () => void;
   nextTour: () => void;
   prevTour: () => void;
   endTour: () => void;
+  minimizeTour: () => void;
+  resumeTour: () => void;
+  tourTotal: number;
 };
 
 const uid = () => Math.random().toString(36).slice(2, 9);
@@ -72,8 +76,12 @@ export const useDesk = create<State>((set, get) => ({
   hidePopup: () => set({ popup: null }),
 
   tourStep: -1,
-  startTour: () => set({ tourStep: 0, room: "today" }),
+  tourMinimized: false,
+  tourTotal: 9,
+  startTour: () => set({ tourStep: 0, room: "today", tourMinimized: false }),
   nextTour: () => set({ tourStep: get().tourStep + 1 }),
   prevTour: () => set({ tourStep: Math.max(0, get().tourStep - 1) }),
-  endTour: () => set({ tourStep: -1 }),
+  endTour: () => set({ tourStep: -1, tourMinimized: false }),
+  minimizeTour: () => set({ tourMinimized: true }),
+  resumeTour: () => set({ tourMinimized: false }),
 }));

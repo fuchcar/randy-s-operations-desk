@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useDesk } from "../store";
+import { Explainable } from "../Explainable";
 
 export function Deliverables() {
   const items = useDesk((s) => s.deliverables);
@@ -20,8 +21,8 @@ export function Deliverables() {
         {items.map((d, i) => {
           const done = d.progress >= 100;
           return (
+            <Explainable id="deliverables" key={d.id}>
             <motion.div
-              key={d.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
@@ -70,6 +71,7 @@ export function Deliverables() {
                 >
                   Send status note
                 </button>
+                <Explainable id="hand-to-randy">
                 <button
                   onClick={() =>
                     show({
@@ -82,8 +84,10 @@ export function Deliverables() {
                 >
                   Hand to Randy
                 </button>
+                </Explainable>
               </div>
             </motion.div>
+            </Explainable>
           );
         })}
       </div>

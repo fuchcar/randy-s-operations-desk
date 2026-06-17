@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Phone, MapPin, Plus, Send } from "lucide-react";
 import { useDesk } from "../store";
+import { Explainable } from "../Explainable";
 import type { Client } from "../data";
 
 const contactBook: Record<string, { contact: string; email: string; phone: string; city: string; note: string }> = {
@@ -56,6 +57,7 @@ export function Clients() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-5">
+        <Explainable id="clients" className="lg:col-span-3">
         <div className="lg:col-span-3 grid gap-3 sm:grid-cols-2">
           {list.map((c, i) => {
             const r = relFor(c);
@@ -93,7 +95,9 @@ export function Clients() {
             );
           })}
         </div>
+        </Explainable>
 
+        <Explainable id="client-detail" className="lg:col-span-2">
         <div className="lg:col-span-2">
           <AnimatePresence mode="wait">
             {selected && (
@@ -169,6 +173,7 @@ export function Clients() {
             )}
           </AnimatePresence>
         </div>
+        </Explainable>
       </div>
     </div>
   );
