@@ -8,6 +8,7 @@ import { Calendar } from "./rooms/Calendar";
 import { Ask } from "./rooms/Ask";
 import { RandyModal } from "./RandyModal";
 import { Tour } from "./Tour";
+import { Explainable, ExplainMenu } from "./Explainable";
 
 const ROOMS = [
   { id: "today", label: "Today" },
@@ -44,7 +45,9 @@ export function DeskShell() {
           </div>
 
           <div className="flex items-center gap-3">
-            <ModeToggle mode={mode} onChange={setMode} />
+            <Explainable id="mode-toggle">
+              <ModeToggle mode={mode} onChange={setMode} />
+            </Explainable>
             <button
               onClick={startTour}
               className="rounded-md border border-[color:var(--gold-soft)]/50 px-3 py-1.5 text-xs text-[color:var(--parchment)] transition hover:bg-[color:var(--gold)]/10"
@@ -99,6 +102,7 @@ export function DeskShell() {
 
       <RandyModal />
       <Tour />
+      <ExplainMenu />
     </div>
   );
 }
