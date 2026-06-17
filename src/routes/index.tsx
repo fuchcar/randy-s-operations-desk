@@ -1,29 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { DeskShell } from "../randy/DeskShell";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Meet Randy — your AI head of operations" },
+      { name: "description", content: "An interactive portfolio demo of a personal command center run by Randy, a witty AI assistant. Click through a lived-in Desk with rooms for Today, Money, Clients, and more." },
+      { property: "og:title", content: "Meet Randy — your AI head of operations" },
+      { property: "og:description", content: "Explore a personal command center run by Randy, a clever AI assistant. Demo and Explore modes — no login required." },
+      { property: "og:type", content: "website" },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  return <DeskShell />;
 }
