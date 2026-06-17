@@ -3,7 +3,7 @@ import { CheckCircle2, Circle, Flame, Camera, Clock, ArrowRight } from "lucide-r
 import { useDesk } from "../store";
 import { shootPrepGear } from "../data";
 import { Explainable } from "../Explainable";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export function Today() {
   const tasks = useDesk((s) => s.tasks);
@@ -198,8 +198,11 @@ export function Today() {
 }
 
 function Greeting() {
-  const hour = new Date().getHours();
-  const part = hour < 12 ? "Morning" : hour < 18 ? "Afternoon" : "Evening";
+  const [part, setPart] = useState("Hello");
+  useEffect(() => {
+    const h = new Date().getHours();
+    setPart(h < 12 ? "Morning" : h < 18 ? "Afternoon" : "Evening");
+  }, []);
   return (
     <div className="flex items-start gap-4">
       <div className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[color:var(--surface-2)] text-2xl ring-1 ring-[color:var(--gold-soft)]/40 sm:flex">🦝</div>
@@ -213,6 +216,7 @@ function Greeting() {
     </div>
   );
 }
+
 
 function QuickAddTask() {
   const addTask = useDesk((s) => s.addTask);
