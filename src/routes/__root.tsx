@@ -87,8 +87,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "Randy's Desk" },
       { name: "twitter:description", content: "Customizable Small Business Management Dashboard" },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/WR4BKtTwE8Or7Q1aATLSl2tmw9z2/social-images/social-1781725266874-Randy.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/WR4BKtTwE8Or7Q1aATLSl2tmw9z2/social-images/social-1781725266874-Randy.webp" },
+      { property: "og:image", content: "https://meet-randy-showcase.lovable.app/randy.png" },
+      { name: "twitter:image", content: "https://meet-randy-showcase.lovable.app/randy.png" },
     ],
     links: [
       { rel: "icon", type: "image/png", href: "/randy.png" },
