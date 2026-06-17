@@ -3,7 +3,7 @@ import { CheckCircle2, Circle, Flame, Camera, Clock, ArrowRight } from "lucide-r
 import { useDesk } from "../store";
 import { shootPrepGear } from "../data";
 import { Explainable } from "../Explainable";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export function Today() {
   const tasks = useDesk((s) => s.tasks);
