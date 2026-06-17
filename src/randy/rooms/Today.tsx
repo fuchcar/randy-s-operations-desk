@@ -3,6 +3,7 @@ import { CheckCircle2, Circle, Flame, Camera, Clock, ArrowRight } from "lucide-r
 import { useDesk } from "../store";
 import { shootPrepGear } from "../data";
 import { Explainable } from "../Explainable";
+import { RandyAvatar } from "../RandyAvatar";
 import { useEffect, useMemo, useState } from "react";
 
 export function Today() {
@@ -205,7 +206,7 @@ function Greeting() {
   }, []);
   return (
     <div className="flex items-start gap-4">
-      <div className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[color:var(--surface-2)] text-2xl ring-1 ring-[color:var(--gold-soft)]/40 sm:flex">🦝</div>
+      <div className="hidden sm:block"><RandyAvatar size={48} ring /></div>
       <div>
         <div className="text-[10px] uppercase tracking-[0.22em] gold-text/80">{part}, friend</div>
         <h1 className="mt-1 font-serif text-3xl sm:text-4xl">Here's where we are.</h1>

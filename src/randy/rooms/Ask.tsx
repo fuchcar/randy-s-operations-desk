@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useDesk } from "../store";
 import { Explainable } from "../Explainable";
+import { RandyAvatar } from "../RandyAvatar";
 
 export function Ask() {
   const [q, setQ] = useState("");
@@ -9,7 +10,7 @@ export function Ask() {
   return (
     <div className="mx-auto max-w-2xl">
       <div className="text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[color:var(--surface-2)] text-2xl ring-1 ring-[color:var(--gold-soft)]/40">🦝</div>
+        <div className="mx-auto inline-block"><RandyAvatar size={56} ring /></div>
         <h2 className="mt-4 font-serif text-3xl">Ask Randy.</h2>
         <p className="mt-2 text-sm text-muted-foreground">Anything. Drafting an email, chasing an invoice, "what did we earn in October" — try me.</p>
       </div>

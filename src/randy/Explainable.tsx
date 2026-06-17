@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useDesk } from "./store";
+import { RandyAvatar } from "./RandyAvatar";
 
 export type ExplainId =
   | "do-this-next"
@@ -170,7 +171,7 @@ export function ExplainMenu() {
             }}
             className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition hover:bg-[color:var(--surface-2)]"
           >
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[color:var(--surface-2)] text-base">🦝</span>
+            <RandyAvatar size={28} />
             <span>
               <span className="block text-[10px] uppercase tracking-[0.18em] gold-text/80">Ask Randy</span>
               <span className="block text-[color:var(--parchment)]">What's this?</span>

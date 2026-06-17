@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useDesk } from "./store";
+import { RandyAvatar } from "./RandyAvatar";
 
 type Step = {
   target: string; // data-tour attribute value
@@ -143,7 +144,7 @@ export function Tour() {
         onClick={resume}
         className="paper fixed bottom-5 right-5 z-[70] flex items-center gap-3 rounded-full px-4 py-2.5 shadow-2xl ring-1 ring-[color:var(--gold-soft)]/40 hover:brightness-110 transition"
       >
-        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[color:var(--surface-2)] text-base">🦝</span>
+        <RandyAvatar size={28} />
         <span className="text-xs">
           <span className="gold-text">Resume tour</span>
           <span className="text-muted-foreground"> · {step + 1}/{steps.length}</span>
@@ -213,7 +214,7 @@ export function Tour() {
           style={cm}
         >
           <div className="flex items-start gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[color:var(--surface-2)] text-lg ring-1 ring-[color:var(--gold-soft)]/40">🦝</div>
+            <RandyAvatar size={36} ring />
             <div className="flex-1">
               <div className="flex items-center justify-between gap-2">
                 <div className="text-[10px] uppercase tracking-[0.18em] gold-text/80">
