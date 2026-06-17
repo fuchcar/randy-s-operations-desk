@@ -148,6 +148,8 @@ export const seedIncoming: Incoming[] = [
 ];
 
 export const debtGearLoan = { name: "Gear loan", original: 6000, paid: 2400, monthly: 240 };
+
+export const shootPrepGear = [
   "Two R5 bodies — batteries fresh",
   "RF 24-70 / 70-200 / 35 1.4",
   "Backup CFexpress (×4)",
