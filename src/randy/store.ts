@@ -36,10 +36,14 @@ type State = {
 
   // Tour
   tourStep: number;       // -1 = inactive
+  tourMinimized: boolean;
   startTour: () => void;
   nextTour: () => void;
   prevTour: () => void;
   endTour: () => void;
+  minimizeTour: () => void;
+  resumeTour: () => void;
+  tourTotal: number;
 };
 
 const uid = () => Math.random().toString(36).slice(2, 9);
