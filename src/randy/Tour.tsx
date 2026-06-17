@@ -37,8 +37,8 @@ const steps: Step[] = [
   },
   {
     target: "tab-money", room: "money",
-    title: "Money.",
-    body: "Cash in, cash out, bills owed vs paid. No spreadsheets, no surprises.",
+    title: "Money — the true ledger.",
+    body: "Available, minus what's already coming (rent, insurance, the standing items), equals Spendable. Definite money, no guesswork. The donut shows where each dollar goes — green for Needs, blue for Protections, gold for Business, plum for Giving — and the bars below put income against outflow so the cushion is honest.",
     placement: "bottom",
   },
   {
@@ -56,13 +56,19 @@ const steps: Step[] = [
   {
     target: "tab-calendar", room: "calendar",
     title: "Calendar.",
-    body: "Your week, one screen. Shoots, meetings, edit blocks — color-coded so you can read it from across the room.",
+    body: "Day, Week, Month, or List — same data, four lenses. Click any day in Month for a floating detail popover, and use the owner chips to show or hide whose events you're looking at.",
     placement: "bottom",
   },
   {
     target: "tab-ask", room: "ask",
     title: "Ask Randy.",
     body: "Type anything. \"Draft a follow-up for Aspen Ridge.\" \"What did Maple & Co pay last year?\" If it touches your work, I touch it.",
+    placement: "bottom",
+  },
+  {
+    target: "header-randy", room: "today",
+    title: "One more thing.",
+    body: "Anywhere you see a card, right-click it (or long-press on touch) and I'll tell you what it's showing. Same trick works on every box, in every room.",
     placement: "bottom",
   },
 ];
