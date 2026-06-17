@@ -173,6 +173,7 @@ export function Clients() {
             )}
           </AnimatePresence>
         </div>
+        </Explainable>
       </div>
     </div>
   );
