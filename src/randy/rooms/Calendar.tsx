@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { CalendarSync } from "lucide-react";
 import { useDesk } from "../store";
+import { Explainable } from "../Explainable";
 
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
@@ -37,6 +38,7 @@ export function Calendar() {
         </button>
       </div>
 
+      <Explainable id="calendar">
       <div className="paper overflow-hidden rounded-2xl">
         <div className="grid grid-cols-7 border-b border-[color:var(--border)] text-center text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
           {DAYS.map((d) => (
@@ -82,6 +84,7 @@ export function Calendar() {
           })}
         </div>
       </div>
+      </Explainable>
     </div>
   );
 }
