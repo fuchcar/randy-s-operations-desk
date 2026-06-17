@@ -23,15 +23,31 @@ export type Bill = { id: string; name: string; amount: number; due: string; paid
 
 export type Deliverable = { id: string; title: string; client: string; progress: number; due: string };
 
+export type Owner = "You" | "Partner" | "Team";
+
 export type CalEvent = {
   id: string;
   title: string;
   client?: string;
-  day: number; // 0..6 (Mon..Sun)
+  /** Days from "today". Negative = past, 0 = today, positive = future. */
+  dateOffset: number;
   start: string; // "9:00 AM"
   end: string;
+  startHour?: number; // 24h for day-view positioning
   kind: "shoot" | "meeting" | "edit" | "personal";
+  owner: Owner;
 };
+
+export type RecurringItem = {
+  id: string;
+  name: string;
+  amount: number;
+  tier: "Need" | "Protect" | "Business" | "Giving";
+  category: string;
+};
+
+export type Bucket = { id: string; name: string; goal: number; saved: number };
+export type Incoming = { id: string; client: string; title: string; amount: number; expected: string };
 
 export const seedTasks: Task[] = [
   { id: "t1", title: "Cull Aspen Ridge listing photos (172 frames)", client: "Aspen Ridge Realty", due: "Today · 4:00 PM", weight: "heavy", hard: true },
