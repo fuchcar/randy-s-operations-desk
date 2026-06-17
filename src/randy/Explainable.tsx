@@ -11,75 +11,56 @@ export type ExplainId =
   | "money-balance"
   | "money-in"
   | "money-out"
+  | "money-available"
+  | "money-coming"
+  | "money-spendable"
+  | "money-donut"
+  | "money-progress"
+  | "money-inout"
+  | "money-debt"
+  | "money-recurring"
+  | "money-buckets"
+  | "money-incoming"
   | "bills"
   | "clients"
   | "client-detail"
   | "deliverables"
   | "calendar"
+  | "calendar-views"
+  | "calendar-density"
+  | "calendar-owners"
   | "ask-randy"
   | "hand-to-randy";
 
 const EXPLAIN: Record<ExplainId, { title: string; body: string }> = {
-  "do-this-next": {
-    title: "Do this next",
-    body: "The one thing worth doing now. I weigh deadlines, dependencies, and effort and point at the single task that unblocks the most.",
-  },
-  "board-heat": {
-    title: "Board heat",
-    body: "How loaded your plate is, as one honest number — open work weighted by effort, not a task count. Past 75% I start politely declining new jobs.",
-  },
-  "hard-deadlines": {
-    title: "Hard deadlines",
-    body: "The dates that don't negotiate, sorted by when they bite.",
-  },
-  "coming-up": {
-    title: "Coming up",
-    body: "Your next shoot with the prep already done — gear list the night before, leave-by time and directions on the day.",
-  },
-  "mode-toggle": {
-    title: "Demo vs Explore",
-    body: "Two ways in. Demo is a fully-stocked fictional business; Explore lets you type your own and see what I'd automate.",
-  },
-  "money-balance": {
-    title: "Balance",
-    body: "Your real number, across accounts, in one place.",
-  },
-  "money-in": {
-    title: "Money in",
-    body: "What cleared this month. I tag each deposit to the job it came from, so the number always ties back to real work.",
-  },
-  "money-out": {
-    title: "Money out",
-    body: "Where it went — gear, rent, software, fuel. Categorized as it lands, never reconciled in a Sunday-night panic.",
-  },
-  bills: {
-    title: "Bills",
-    body: "What's owed versus what's handled — I'd flag a bill the day before, never the day of.",
-  },
-  clients: {
-    title: "Clients",
-    body: "Your little black book: relationship, history, contact, and the one note that matters about each.",
-  },
-  "client-detail": {
-    title: "Client detail",
-    body: "Everything I know about this one — the contact, the history, the quirks. The note in italics is the thing you'd forget if I didn't keep it here.",
-  },
-  deliverables: {
-    title: "Deliverables",
-    body: "Honest progress, not 'almost done.' Drag it to where the work actually is and I keep the client gently informed.",
-  },
-  calendar: {
-    title: "Calendar",
-    body: "Your week on one screen — shoots, meetings, edits — color-coded to read from across the room.",
-  },
-  "ask-randy": {
-    title: "Ask Randy",
-    body: "The catch-all. Type anything that doesn't fit a room and I take it from there.",
-  },
-  "hand-to-randy": {
-    title: "Hand to Randy",
-    body: "The handoff. Wired up, I'd actually do the next step — cull, draft, schedule — and leave it for your sign-off.",
-  },
+  "do-this-next": { title: "Do this next", body: "The one thing worth doing now. I weigh deadlines, dependencies, and effort and point at the single task that unblocks the most." },
+  "board-heat": { title: "Board heat", body: "How loaded your plate is, as one honest number — open work weighted by effort, not a task count. Past 75% I start politely declining new jobs." },
+  "hard-deadlines": { title: "Hard deadlines", body: "The dates that don't negotiate, sorted by when they bite." },
+  "coming-up": { title: "Coming up", body: "Your next shoot with the prep already done — gear list the night before, leave-by time and directions on the day." },
+  "mode-toggle": { title: "Demo vs Explore", body: "Two ways in. Demo is a fully-stocked fictional business; Explore lets you type your own and see what I'd automate." },
+  "money-balance": { title: "Balance", body: "Your real number, across accounts, in one place." },
+  "money-in": { title: "Money in", body: "What cleared this month. I tag each deposit to the job it came from." },
+  "money-out": { title: "Money out", body: "Where it went — gear, rent, software, fuel. Categorized as it lands." },
+  "money-available": { title: "Available", body: "What's actually in the accounts right now, before anything still owed is taken out." },
+  "money-coming": { title: "Coming (certain)", body: "Fixed costs you've already committed to this month — rent, insurance, recurring software, the standing items. Not maybes." },
+  "money-spendable": { title: "Spendable", body: "Available minus what's certain to leave. The number you can actually decide with — before any new purchases." },
+  "money-donut": { title: "Where it goes", body: "Your monthly outflow grouped by what each dollar protects — Needs, Protections, Business, Giving. Read the slices, skip the spreadsheet." },
+  "money-progress": { title: "This month", body: "How much of the month's outflow is already handled versus still owed. Green = done, soft = still to go." },
+  "money-inout": { title: "Income vs outflow", body: "Two bars, one truth: what came in, what went out, and the cushion (or shortfall) between them." },
+  "money-debt": { title: "Debt payoff", body: "How far you've come on this balance and how far is left. One bar, no surprises." },
+  "money-recurring": { title: "Recurring", body: "The standing monthly items. Tier-tagged so you can see what's a Need versus a Nice-to-have at a glance." },
+  "money-buckets": { title: "Buckets", body: "Money set aside on purpose — taxes, upgrades, the slow-season cushion. Progress toward each goal." },
+  "money-incoming": { title: "Incoming", body: "Invoices you've sent or jobs that wrap soon. Conservative estimates of when each lands." },
+  bills: { title: "Bills", body: "What's owed versus what's handled — I'd flag a bill the day before, never the day of." },
+  clients: { title: "Clients", body: "Your little black book: relationship, history, contact, and the one note that matters about each." },
+  "client-detail": { title: "Client detail", body: "Everything I know about this one — the contact, the history, the quirks." },
+  deliverables: { title: "Deliverables", body: "Honest progress, not 'almost done.' Drag it to where the work actually is and I keep the client gently informed." },
+  calendar: { title: "Calendar", body: "Your week on one screen — shoots, meetings, edits — color-coded to read from across the room." },
+  "calendar-views": { title: "Views", body: "Day for focus, Week for rhythm, Month for the big picture, List for catching up. Same data, four lenses." },
+  "calendar-density": { title: "Density", body: "Comfortable when you want breathing room, Compact when the week is packed and you need to see it all at once." },
+  "calendar-owners": { title: "Owner filter", body: "Who's on the hook — You, your Partner, or the Team. Filter to the slice that's yours." },
+  "ask-randy": { title: "Ask Randy", body: "The catch-all. Type anything that doesn't fit a room and I take it from there." },
+  "hand-to-randy": { title: "Hand to Randy", body: "The handoff. Wired up, I'd actually do the next step — cull, draft, schedule — and leave it for your sign-off." },
 };
 
 type MenuState = { x: number; y: number; id: ExplainId } | null;
