@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useDesk } from "../store";
+import { Explainable } from "../Explainable";
 
 export function Ask() {
   const [q, setQ] = useState("");
@@ -12,6 +13,7 @@ export function Ask() {
         <h2 className="mt-4 font-serif text-3xl">Ask Randy.</h2>
         <p className="mt-2 text-sm text-muted-foreground">Anything. Drafting an email, chasing an invoice, "what did we earn in October" — try me.</p>
       </div>
+      <Explainable id="ask-randy">
       <motion.form
         onSubmit={(e) => {
           e.preventDefault();
@@ -41,6 +43,7 @@ export function Ask() {
           </button>
         </div>
       </motion.form>
+      </Explainable>
       <div className="mt-6 flex flex-wrap justify-center gap-2 text-xs">
         {["What's our heaviest week this month?", "Draft an invoice for Harbor Light Inn", "Who haven't I followed up with in 30 days?"].map((s) => (
           <button
