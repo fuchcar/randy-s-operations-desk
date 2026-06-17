@@ -399,16 +399,19 @@ function Section({
   return (
     <Explainable id={id as any}>
       <div>
-        <button onClick={() => setOpen((o) => !o)} className="flex w-full items-center justify-between gap-4 px-6 py-4 text-left transition hover:bg-[color:var(--surface-2)]/40">
-          <div className="flex flex-col">
+        <div className="flex w-full items-center justify-between gap-4 px-6 py-4 transition hover:bg-[color:var(--surface-2)]/40">
+          <button onClick={() => setOpen((o) => !o)} className="flex flex-1 flex-col text-left">
             <div className="text-[10px] uppercase tracking-[0.22em] gold-text/80">{title}</div>
             {subtitle && <div className="mt-0.5 text-sm">{subtitle}</div>}
-          </div>
+          </button>
           <div className="flex items-center gap-3">
             {action}
-            <motion.span animate={{ rotate: open ? 180 : 0 }} className="text-muted-foreground"><ChevronDown className="h-4 w-4" /></motion.span>
+            <button onClick={() => setOpen((o) => !o)} aria-label="Toggle section" className="text-muted-foreground">
+              <motion.span animate={{ rotate: open ? 180 : 0 }} className="inline-block"><ChevronDown className="h-4 w-4" /></motion.span>
+            </button>
           </div>
-        </button>
+        </div>
+
         <AnimatePresence initial={false}>
           {open && (
             <motion.div
