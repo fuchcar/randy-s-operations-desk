@@ -9,6 +9,7 @@ import { Ask } from "./rooms/Ask";
 import { RandyModal } from "./RandyModal";
 import { Tour } from "./Tour";
 import { Explainable, ExplainMenu } from "./Explainable";
+import { RandyAvatar } from "./RandyAvatar";
 
 const ROOMS = [
   { id: "today", label: "Today" },
@@ -36,8 +37,9 @@ export function DeskShell() {
               initial={{ rotate: -8, scale: 0.9 }}
               animate={{ rotate: 0, scale: 1 }}
               transition={{ type: "spring", stiffness: 220, damping: 14 }}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-[color:var(--surface-2)] text-2xl ring-1 ring-[color:var(--gold-soft)]/40"
-            >🦝</motion.div>
+            >
+              <RandyAvatar size={44} ring />
+            </motion.div>
             <div className="leading-tight">
               <div className="text-[10px] uppercase tracking-[0.22em] gold-text/80">Meet Randy</div>
               <div className="font-serif text-xl">Randy's Desk</div>

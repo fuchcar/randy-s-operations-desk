@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useDesk } from "./store";
+import { RandyAvatar } from "./RandyAvatar";
 
 export function RandyModal() {
   const popup = useDesk((s) => s.popup);
@@ -22,9 +23,8 @@ export function RandyModal() {
             className="paper relative m-4 w-full max-w-lg rounded-2xl p-6 sm:p-8"
           >
             <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[color:var(--surface-2)] text-2xl ring-1 ring-[color:var(--gold-soft)]/40">
-                🦝
-              </div>
+              <RandyAvatar size={48} ring />
+
               <div className="flex-1">
                 {popup?.tag && (
                   <div className="mb-1 text-[10px] uppercase tracking-[0.18em] gold-text/80">
