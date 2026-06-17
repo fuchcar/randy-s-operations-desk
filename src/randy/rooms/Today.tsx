@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, Circle, Flame, Camera, Clock, ArrowRight } from "lucide-react";
 import { useDesk } from "../store";
 import { shootPrepGear } from "../data";
+import { Explainable } from "../Explainable";
 import { useMemo, useState } from "react";
 
 export function Today() {
@@ -34,6 +35,7 @@ export function Today() {
 
       <div className="grid gap-5 md:grid-cols-3">
         {/* Do this next */}
+        <Explainable id="do-this-next" className="md:col-span-2">
         <motion.div
           data-tour="do-next"
           whileHover={{ y: -2 }}
@@ -54,6 +56,7 @@ export function Today() {
                 everything downstream gets easier."
               </p>
               <div className="mt-5 flex flex-wrap gap-2">
+                <Explainable id="hand-to-randy">
                 <button
                   onClick={() =>
                     showPopup({
@@ -67,6 +70,7 @@ export function Today() {
                 >
                   Hand to Randy
                 </button>
+                </Explainable>
                 <button
                   onClick={() => toggleTask(next.id)}
                   className="rounded-md border border-[color:var(--border)] px-4 py-2 text-sm transition hover:bg-[color:var(--surface-2)]"
