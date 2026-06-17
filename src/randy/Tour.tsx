@@ -44,7 +44,19 @@ const steps: Step[] = [
   {
     target: "tab-clients", room: "clients",
     title: "Clients.",
-    body: "Your little black book — relationships, job history, the works.",
+    body: "Your little black book — relationships, job history, the works. Click any name for the detail panel.",
+    placement: "bottom",
+  },
+  {
+    target: "tab-deliverables", room: "deliverables",
+    title: "Deliverables.",
+    body: "Every project in flight, with an honest progress slider. Drag it. Move the truth, not the optics.",
+    placement: "bottom",
+  },
+  {
+    target: "tab-calendar", room: "calendar",
+    title: "Calendar.",
+    body: "Your week, one screen. Shoots, meetings, edit blocks — color-coded so you can read it from across the room.",
     placement: "bottom",
   },
   {
