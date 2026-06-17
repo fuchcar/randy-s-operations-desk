@@ -77,7 +77,7 @@ export const useDesk = create<State>((set, get) => ({
 
   tourStep: -1,
   tourMinimized: false,
-  tourTotal: 9,
+  tourTotal: 10,
   startTour: () => set({ tourStep: 0, room: "today", tourMinimized: false }),
   nextTour: () => set({ tourStep: get().tourStep + 1 }),
   prevTour: () => set({ tourStep: Math.max(0, get().tourStep - 1) }),
